@@ -1,12 +1,31 @@
 {% extends 'main.html' %}
-
-
-
 {%block content%}
 
 <h1>
-    Project html pages
+Hello, you are on the {{page}} page
+{% if number > 10 %}
+<p>Number is greater than 10</p>
+
+{% elif number == 10 %}
+<p>Number is exactly 10</p>
+
+{% else %}
+<p>Number is less than 10</p>
+
+{% endif %}
 </h1>
-<p> jakies tam urwa porjekty ja pierdole</p>
+<p> jakies tam projekty</p>
+
+<hr>
+
+<h1>Projects</h1>
+<ul>
+    {% for project in projects %}
+        <li>Title:<a href="{% url 'project' project.id %}">{{project.title}}</a> --- {{project.description}}</li>
+    {%endfor%}
+
+
+</ul>
+
 
 {%endblock content%}
